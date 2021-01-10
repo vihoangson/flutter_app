@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
           child: FlatButton(
             onPressed: ()async {
               print('ok men');
-              // final AudioCache player = new AudioCache();
-              // player.play('audio/cello.mp3');
+              final AudioCache player = new AudioCache();
+              player.play('audio/cello.mp3');
               var url = 'http://ttht.oop.vn/';
               var response = await  http.get(url);
               print(response);
