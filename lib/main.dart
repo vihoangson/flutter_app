@@ -15,12 +15,12 @@ class MyApp extends StatelessWidget {
     player.play('audio-xylophone/note$soundNumber.wav');
   }
 
-  Widget buildKey() {
+  Widget buildKey({Color color,int playS}) {
     return Expanded(
       child: FlatButton(
-        color: Colors.red,
+        color: color,
         onPressed: () {
-          playSound(1);
+          playSound(playS);
         },
       ),
     );
@@ -35,49 +35,14 @@ class MyApp extends StatelessWidget {
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            buildKey(),
-            Expanded(
-                child: FlatButton(
-                    onPressed: () {
-                      playSound(2);
-                    },
-                    child: null,
-                    color: Colors.orange)),
-            Expanded(
-                child: FlatButton(
-                    onPressed: () {
-                      playSound(3);
-                    },
-                    child: null,
-                    color: Colors.yellow)),
-            Expanded(
-                child: FlatButton(
-                    onPressed: () {
-                      playSound(4);
-                    },
-                    child: null,
-                    color: Colors.blue)),
-            Expanded(
-                child: FlatButton(
-                    onPressed: () {
-                      playSound(5);
-                    },
-                    child: null,
-                    color: Colors.green)),
-            Expanded(
-                child: FlatButton(
-                    onPressed: () {
-                      playSound(6);
-                    },
-                    child: null,
-                    color: Colors.purple)),
-            Expanded(
-                child: FlatButton(
-                    onPressed: () {
-                      playSound(7);
-                    },
-                    child: null,
-                    color: Colors.deepPurple)),
+            buildKey(color: Colors.red,playS: 1),
+            buildKey(color: Colors.orange,playS: 2),
+            buildKey(color: Colors.yellow,playS: 3),
+            buildKey(color: Colors.blue,playS: 4),
+            buildKey(color: Colors.green,playS: 5),
+            buildKey(color: Colors.purple,playS: 6),
+            buildKey(color: Colors.deepPurple,playS: 7),
+            
           ],
         )),
       ),
