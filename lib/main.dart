@@ -1,39 +1,82 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audio_cache.dart';
-import 'package:http/http.dart'  as http;
+import 'package:http/http.dart' as http;
+import 'package:cupertino_icons/cupertino_icons.dart';
 // The main function is the starting point for all our flutter App.
 void main() {
-  runApp(MyApp());
+  runApp(Quizzler());
 }
 
-class MyApp extends StatelessWidget {
+class Quizzler extends StatefulWidget {
+  @override
+  _QuizzlerState createState() => _QuizzlerState();
+}
+
+class _QuizzlerState extends State<Quizzler> {
+  List<Icon> listScore = [
+    Icon(Icons.close,color:Colors.red),
+    Icon(Icons.close,color:Colors.red),
+    Icon(Icons.check,color:Colors.cyan),
+    Icon(Icons.close,color:Colors.red),
+    Icon(Icons.close,color:Colors.red),
+    Icon(Icons.check,color:Colors.cyan),
+    Icon(Icons.close,color:Colors.red),
+    Icon(Icons.close,color:Colors.red),
+    Icon(Icons.check,color:Colors.cyan),
+    Icon(Icons.close,color:Colors.red),
+    Icon(Icons.close,color:Colors.red),
+    Icon(Icons.check,color:Colors.cyan),
+    Icon(Icons.close,color:Colors.red),
+    Icon(Icons.close,color:Colors.red),
+
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.blue,
-        body: SafeArea(
-          child: FlatButton(
-            onPressed: ()async {
-              print('ok men');
-              final AudioCache player = new AudioCache();
-              player.play('audio/cello.mp3');
-              var url = 'http://ttht.oop.vn/';
-              var response = await  http.get(url);
-              print(response);
-              print(response.statusCode);
-              print(response.body);
-
-            },
-            height: 100.0,
-            color: Colors.white,
-            child: Text('cello'),
-          ),
+        home: Scaffold(
+          backgroundColor: Colors.green,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+              child: FlatButton(
+                onPressed: () {
+                  print('Ok');
+                },
+                color: Colors.red,
+                child: Text('Ok'),
+              ),
+            ),
+            Expanded(
+              child: FlatButton(
+                onPressed: () {
+                  print('Ok');
+                },
+                color: Colors.green,
+                child: Text('Ok'),
+              ),
+            ),
+            Expanded(
+              child: FlatButton(
+                onPressed: () {
+                  print('Ok');
+                },
+                color: Colors.green,
+                child: Text('Ok'),
+              ),
+            ),
+            Expanded(
+              child: Row(
+                children: listScore,
+              ),
+            ),
+          ],
         ),
       ),
-    );
+    ));
   }
 }
