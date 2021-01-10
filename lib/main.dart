@@ -18,43 +18,100 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.blue,
         body: SafeArea(
-          child: Column(children: <Widget>[
-            FlatButton(
-                color: Colors.white,
-                onPressed: () {
-                  AudioCache player = AudioCache();
-                  player.play(soundAnime.files_url[0]);
-                },
-                child: Text('sound 1')),
-            FlatButton(
-                color: Colors.white,
-                onPressed: () {
-                  AudioCache player = AudioCache();
-                  player.play(soundAnime.files_url[1]);
-                },
-                child: Text('sound 2')),
-            FlatButton(
-                color: Colors.white,
-                onPressed: () {
-                  AudioCache player = AudioCache();
-                  player.play(soundAnime.files_url[2]);
-                },
-                child: Text('sound 3')),
-            FlatButton(
-                color: Colors.white,
-                onPressed: () {
-                  AudioCache player = AudioCache();
-                  player.play(soundAnime.files_url[3]);
-                },
-                child: Text('sound 4')),
-            FlatButton(
-                color: Colors.white,
-                onPressed: () {
-                  AudioCache player = AudioCache();
-                  player.play(soundAnime.files_url[4]);
-                },
-                child: Text('sound 5')),
-          ]),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Expanded(
+                  child: FlatButton(
+                      color: Colors.white,
+                      onPressed: () {
+                        AudioCache player = AudioCache();
+                        player.play(soundAnime.files_url[0]);
+                      },
+                      child: Text('sound 1')),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      color: Colors.white,
+                      onPressed: () {
+                        AudioCache player = AudioCache();
+                        player.play(soundAnime.files_url[1]);
+                      },
+                      child: Text('sound 2')),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      color: Colors.white,
+                      onPressed: () {
+                        AudioCache player = AudioCache();
+                        player.play(soundAnime.files_url[2]);
+                      },
+                      child: Text('sound 3')),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      color: Colors.white,
+                      onPressed: () {
+                        AudioCache player = AudioCache();
+                        player.play(soundAnime.files_url[3]);
+                      },
+                      child: Text('sound 4')),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      color: Colors.white,
+                      onPressed: () {
+                        AudioCache player = AudioCache();
+                        player.play(soundAnime.files_url[4]);
+                      },
+                      child: Text('sound 5')),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      color: Colors.white,
+                      onPressed: () {
+                        AudioCache player = AudioCache();
+                        player.play(soundAnime.files_url[5]);
+                      },
+                      child: Text('sound 6')),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      color: Colors.white,
+                      onPressed: () {
+                        AudioCache player = AudioCache();
+                        player.play(soundAnime.files_url[6]);
+                      },
+                      child: Text('sound 7')),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      color: Colors.white,
+                      onPressed: () {
+                        AudioCache player = AudioCache();
+                        player.play(soundAnime.files_url[7]);
+                      },
+                      child: Text('sound 8')),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      color: Colors.white,
+                      onPressed: () {
+                        AudioCache player = AudioCache();
+                        player.play(soundAnime.files_url[8]);
+                      },
+                      child: Text('sound 9')),
+                ),
+                Expanded(
+                  child: FlatButton(
+                      color: Colors.white,
+                      onPressed: () {
+                        AudioCache player = AudioCache();
+                        player.play(soundAnime.files_url[9]);
+                      },
+                      child: Text('sound 10')),
+                ),
+              ]),
         ),
       ),
     );
