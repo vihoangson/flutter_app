@@ -17,13 +17,16 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.blue,
         body: SafeArea(
           child: FlatButton(
-            onPressed: (){
+            onPressed: ()async {
               print('ok men');
-              final AudioCache player = new AudioCache();
-              player.play('audio/cello.mp3');
+              // final AudioCache player = new AudioCache();
+              // player.play('audio/cello.mp3');
               var url = 'http://ttht.oop.vn/';
-              var response = http.get(url);
+              var response = await  http.get(url);
               print(response);
+              print(response.statusCode);
+              print(response.body);
+
             },
             height: 100.0,
             color: Colors.white,
