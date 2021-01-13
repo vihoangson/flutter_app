@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomContainerHeight = 80.0;
 const colorMain = Color(0xFF1D1E33);
@@ -50,50 +51,117 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     // return Container();
     return Scaffold(
-        appBar: AppBar(title: Text('BMI Caculator')),
+        appBar: AppBar(title: Text('BMI Calculator')),
         body: Column(
           children: <Widget>[
             Expanded(
                 child: Row(
               children: <Widget>[
-                ReUseWidget(colour: colorMain),
-                ReUseWidget(colour: colorMain),
+                Expanded(
+                  child: ReUseWidget(
+                    colour: colorMain,
+                    childNode: childCard(
+                      iconChild: FontAwesomeIcons.mars,
+                      textMain: 'MALE',
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ReUseWidget(
+                    colour: colorMain,
+                    childNode: childCard(
+                      iconChild: FontAwesomeIcons.venus,
+                      textMain: 'FEMALE',
+                    ),
+                  ),
+                ),
               ],
             )),
             Expanded(
                 child: Row(
               children: <Widget>[
-                ReUseWidget(colour: colorMain),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      print('tab');
+                    },
+                    child: ReUseWidget(
+                      colour: colorMain,
+                      childNode: childCard(
+                        iconChild: FontAwesomeIcons.file,
+                        textMain: 'FEMALE',
+                      ),
+                    ),
+                  ),
+                ),
               ],
             )),
             Expanded(
                 child: Row(
               children: <Widget>[
-                ReUseWidget(colour: colorMain),
-                ReUseWidget(colour: colorMain),
+                Expanded(
+                  child: ReUseWidget(
+                    colour: colorMain,
+                    childNode: null,
+                  ),
+                ),
+                Expanded(
+                  child: ReUseWidget(
+                    colour: colorMain,
+                    childNode: null,
+                  ),
+                ),
               ],
             )),
-            Container(
-              color: colorBottom,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: bottomContainerHeight,
+            Expanded(
+              child: Container(
+                color: colorBottom,
+                margin: EdgeInsets.only(top: 10.0),
+                width: double.infinity,
+                height: bottomContainerHeight,
+              ),
             )
           ],
         ));
   }
 }
 
+class childCard extends StatelessWidget {
+  final IconData iconChild;
+  final String textMain;
+
+  childCard({@required this.iconChild, @required this.textMain});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(iconChild, size: 80.0),
+        SizedBox(
+          height: 15.0,
+        ),
+        Text(
+          textMain,
+          style: TextStyle(fontSize: 18.0, color: Color(0xFF8D8E98)),
+        )
+      ],
+    );
+  }
+}
+
 class ReUseWidget extends StatelessWidget {
   Color colour;
+  Widget childNode;
 
-  ReUseWidget({@required this.colour});
+  ReUseWidget({@required this.colour, @required Widget this.childNode});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.all(15.0),
+        child: childNode,
+        margin: EdgeInsets.all(5.0),
         decoration: BoxDecoration(
             color: colour, borderRadius: BorderRadius.circular(10.0)),
       ),
