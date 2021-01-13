@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+const bottomContainerHeight = 80.0;
+const colorMain = Color(0xFF1D1E33);
+const colorBottom = Color(0xEFEB1555);
+
 void main() {
   runApp(MyApp());
 }
@@ -52,43 +56,46 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
                 child: Row(
               children: <Widget>[
-                ReUseWidget(),
-                ReUseWidget(),
+                ReUseWidget(colour: colorMain),
+                ReUseWidget(colour: colorMain),
               ],
             )),
             Expanded(
                 child: Row(
               children: <Widget>[
-                ReUseWidget(),
+                ReUseWidget(colour: colorMain),
               ],
             )),
             Expanded(
                 child: Row(
               children: <Widget>[
-                ReUseWidget(),
-                ReUseWidget(),
+                ReUseWidget(colour: colorMain),
+                ReUseWidget(colour: colorMain),
               ],
             )),
+            Container(
+              color: colorBottom,
+              margin: EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              height: bottomContainerHeight,
+            )
           ],
         ));
   }
 }
 
 class ReUseWidget extends StatelessWidget {
-  const ReUseWidget({
-    Key key,
-  }) : super(key: key);
+  Color colour;
+
+  ReUseWidget({@required this.colour});
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-
         margin: EdgeInsets.all(15.0),
         decoration: BoxDecoration(
-          color: Colors.deepPurple,
-          borderRadius: BorderRadius.circular(10.0)
-        ),
+            color: colour, borderRadius: BorderRadius.circular(10.0)),
       ),
     );
   }
