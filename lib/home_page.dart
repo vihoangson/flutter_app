@@ -10,9 +10,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
-  int genter;
-
-  int height;
+  int genter = 1;
+  int weight = 40;
+  int age = 15;
+  double height = 17.0;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class _HomePage extends State<HomePage> {
           children: <Widget>[
             Expanded(
               child: ReUseWidget(
-                colour: genter == 2 ? colorMain : colorMainDeactive,
+                colour: genter == 1 ? colorMainDeactive : colorMain,
                 childNode: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -40,7 +41,7 @@ class _HomePage extends State<HomePage> {
             ),
             Expanded(
               child: ReUseWidget(
-                colour: genter == 1 ? colorMain : colorMainDeactive,
+                colour: genter == 2 ? colorMainDeactive : colorMain,
                 childNode: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -66,27 +67,32 @@ class _HomePage extends State<HomePage> {
                 },
                 child: ReUseWidget(
                   colour: colorMain,
-                  childNode: SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      inactiveTrackColor: Color(0xFF8D8E98),
-                      activeTrackColor: Colors.white,
-                      thumbColor: Color(0xFFEB1555),
-                      overlayColor: Color(0x29EB1555),
-                      thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                      overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 30.0),
-                    ),
-                    child: Slider(
-                      value: 121,
-                      min: 120.0,
-                      max: 220.0,
-                      onChanged: (double newValue) {
-                        setState(() {
-                          height = 2;
-                        });
-                      },
-                    ),
+                  childNode: Column(
+                    children: [
+                      Text('$height CM'),
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          inactiveTrackColor: Color(0xFF8D8E98),
+                          activeTrackColor: Colors.white,
+                          thumbColor: Color(0xFFEB1555),
+                          overlayColor: Color(0x29EB1555),
+                          thumbShape:
+                              RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          overlayShape:
+                              RoundSliderOverlayShape(overlayRadius: 30.0),
+                        ),
+                        child: Slider(
+                          value: 121,
+                          min: 30.0,
+                          max: 250.0,
+                          onChanged: (double newValue) {
+                            setState(() {
+                              height = newValue;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                   onPress: () {},
                 ),
@@ -100,14 +106,78 @@ class _HomePage extends State<HomePage> {
             Expanded(
               child: ReUseWidget(
                 colour: colorMain,
-                childNode: null,
+                childNode: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Weight'),
+                    Text('$weight kg'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FloatingActionButton(
+                          backgroundColor:Color(0xFF4C4F5E),
+                          onPressed: () {
+                            setState(() {
+                              weight++;
+                            });
+
+                          },
+                          child: Icon(FontAwesomeIcons.plus,color: Colors.white,),
+                        ),
+
+                        FloatingActionButton(
+                          backgroundColor:Color(0xFF4C4F5E),
+                          onPressed: () {
+                            setState(() {
+                              weight--;
+                            });
+
+                          },
+                          child: Icon(FontAwesomeIcons.minus,color: Colors.white),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
                 onPress: () {},
               ),
             ),
             Expanded(
               child: ReUseWidget(
                 colour: colorMain,
-                childNode: null,
+                childNode: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('AGE'),
+                    Text('$age'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FloatingActionButton(
+                          backgroundColor:Color(0xFF4C4F5E),
+                          onPressed: () {
+                            setState(() {
+                              age++;
+                            });
+
+                          },
+                          child: Icon(FontAwesomeIcons.plus,color: Colors.white,),
+                        ),
+
+                        FloatingActionButton(
+                          backgroundColor:Color(0xFF4C4F5E),
+                          onPressed: () {
+                            setState(() {
+                              age--;
+                            });
+
+                          },
+                          child: Icon(FontAwesomeIcons.minus,color: Colors.white),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
                 onPress: () {},
               ),
             ),
