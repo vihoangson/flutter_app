@@ -32,7 +32,7 @@ class _HomePage extends State<HomePage> {
                   },
                   child: childCard(
                     iconChild: FontAwesomeIcons.mars,
-                    textMain: 'MALE $genter',
+                    textMain: 'MALE',
                   ),
                 ),
                 onPress: () {},
@@ -49,7 +49,7 @@ class _HomePage extends State<HomePage> {
                   },
                   child: childCard(
                     iconChild: FontAwesomeIcons.venus,
-                    textMain: 'FEMALE $genter',
+                    textMain: 'FEMALE',
                   ),
                 ),
               ),
