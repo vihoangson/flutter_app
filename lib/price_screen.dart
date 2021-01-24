@@ -17,6 +17,7 @@ class _PriceScreenState extends State<PriceScreen> {
 
   int price;
   final oCcy = new NumberFormat("#,##0.00", "en_US");
+
   List<DropdownMenuItem<String>> getDropdownItems() {
     List<DropdownMenuItem<String>> DropdownItems = [];
     for (String currency in currenciesList) {
@@ -60,23 +61,8 @@ class _PriceScreenState extends State<PriceScreen> {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
-            child: Card(
-              color: Colors.lightBlueAccent,
-              elevation: 5.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
-                child: Text(
-                  '1 BTC = ${price} $currency',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+            child: Column(
+              children: getWidgetCoin(),
             ),
           ),
           Container(
@@ -106,5 +92,32 @@ class _PriceScreenState extends State<PriceScreen> {
     }
 
     return PickerItems;
+  }
+
+  List<Widget> getWidgetCoin() {
+    List<Widget> ListCrypto = [];
+    for (String coin in cryptoList) {
+      ListCrypto.add(
+        Card(
+          color: Colors.lightBlueAccent,
+          elevation: 5.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
+            child: Text(
+              '1 $coin = ${price} $currency',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20.0,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    return ListCrypto;
   }
 }
