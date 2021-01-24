@@ -35,14 +35,17 @@ class _LocationScreenState extends State<LocationScreen> {
       message = 'Can\'t get data';
       name = '';
     }
-    double tep = locationWeather['main']['temp'];
-    temp = tep.toInt();
-    temp = temp ~/ 10;
-    message = weatherModel.getMessage(temp);
-    var condition = locationWeather['weather'][0]['id'];
-    weatherIcon = weatherModel.getWeatherIcon(condition);
+    setState(() {
+      double tep = locationWeather['main']['temp'];
+      temp = tep.toInt();
+      temp = temp ~/ 10;
+      message = weatherModel.getMessage(temp);
+      var condition = locationWeather['weather'][0]['id'];
+      weatherIcon = weatherModel.getWeatherIcon(condition);
 
-    name = locationWeather['name'];
+      name = locationWeather['name'];
+    });
+
   }
 
   @override
@@ -77,11 +80,18 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   FlatButton(
-                    onPressed: () {
-                      var typeName = Navigator.push(context,
+                    onPressed: () async {
+                      var typeName = await Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return CityScreen();
                       }));
+                      print(typeName);
+
+                      if(typeName != null){
+                        var m = await weatherModel.getLocationWeatherByCity(typeName);
+                        print(m);
+                        updateUI(m);
+                      }
                     },
                     child: Icon(
                       Icons.location_city,
