@@ -38,12 +38,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
     print(location.latitude);
 
     String url =
-        'https://api.openweathermap.org/data/2.5/weather?lon=$longitude&lat=$latitude&appid=$apiKey';
+        'https://api.openweathermap.org/data/2.5/weather?lon=$longitude&lat=$latitude&appid=$apiKey&unit=Celsius';
     NetworkHelper networkHelper = NetworkHelper(url);
     var response = await networkHelper.getData();
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return LocationScreen();
+      return LocationScreen(locationWeather:response);
     }));
 
     double name = response['main']['temp'];
