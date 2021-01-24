@@ -1,4 +1,5 @@
 const List<String> currenciesList = [
+  'VND',
   'AUD',
   'BRL',
   'CAD',

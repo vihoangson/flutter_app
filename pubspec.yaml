@@ -9,8 +9,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_dropdown: ^0.0.8
-
+  http: ^0.12.2
   cupertino_icons: ^0.1.2
+  intl: any
 
 dev_dependencies:
   flutter_test:

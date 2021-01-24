@@ -1,3 +1,4 @@
+import 'package:bitcoin_ticker/loading_page.dart';
 import 'package:flutter/material.dart';
 import 'price_screen.dart';
 

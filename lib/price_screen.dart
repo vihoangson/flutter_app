@@ -1,6 +1,9 @@
+import 'package:bitcoin_ticker/constants.dart';
+import 'package:bitcoin_ticker/services/networking.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'coin_data.dart';
+import 'package:intl/intl.dart';
 
 class PriceScreen extends StatefulWidget {
   @override
@@ -12,15 +15,10 @@ class _PriceScreenState extends State<PriceScreen> {
 
   String currency;
 
+  int price;
+  final oCcy = new NumberFormat("#,##0.00", "en_US");
   List<DropdownMenuItem<String>> getDropdownItems() {
     List<DropdownMenuItem<String>> DropdownItems = [];
-    // for (var i = 0; i < currenciesList.length; i++) {
-    //   var newItem = DropdownMenuItem(
-    //     child: Text(currenciesList[i]),
-    //     value: currenciesList[i],
-    //   );
-    //   DropdownItems.add(newItem);
-    // }
     for (String currency in currenciesList) {
       var newItem = DropdownMenuItem(
         child: Text(currency),
@@ -35,7 +33,19 @@ class _PriceScreenState extends State<PriceScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    LoadPrice(currenciesList.first);
+  }
+
+  void LoadPrice(String curr) async {
     currency = currenciesList[0];
+    String Url = UrlAPI + 'BTC/' + curr + apikey;
+    NetworkHelper networkHelper = NetworkHelper(Url);
+    print(Url);
+    var data = await networkHelper.getData();
+    setState(() {
+      var priceDouble = data['rate'];
+      price = priceDouble.toInt();
+    });
   }
 
   @override
@@ -59,7 +69,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = ? $currency',
+                  '1 BTC = ${price} $currency',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
@@ -77,9 +87,9 @@ class _PriceScreenState extends State<PriceScreen> {
               child: CupertinoPicker(
                   itemExtent: 32.0,
                   onSelectedItemChanged: (selectedIndex) {
-                    print(currenciesList[selectedIndex]);
                     setState(() {
                       currency = currenciesList[selectedIndex];
+                      LoadPrice(currency);
                     });
                   },
                   children: getPickerItems())),
@@ -98,13 +108,3 @@ class _PriceScreenState extends State<PriceScreen> {
     return PickerItems;
   }
 }
-
-// DropdownButton<String>(
-// value: 'USD',
-// items: getDropdownItems(),
-// onChanged: (value) {
-// setState(() {
-// selectCurrency = value;
-// });
-// },
-// ),
